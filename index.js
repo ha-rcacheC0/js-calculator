@@ -21,5 +21,4 @@ function cal() {
   }
 }
 console.log(cal());
-
-
+ 
