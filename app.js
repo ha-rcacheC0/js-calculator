@@ -22,7 +22,7 @@ let num2;
 
 do {
   num2 = rs.questionInt(`Your current operation is: ${num1} ${operation}
-Please enter your second number now for a result. `);
+Please enter your second number now for the result. `);
 
   if (operation === '/' && num2 === 0) {
     console.log(`Error: Division by zero is not allowed. Please enter a valid number.`);
@@ -49,7 +49,7 @@ const answer = () => {
       result = num1 / num2;
       break;
     default:
-      console.log('Invalid operation');   
+      console.log('Invalid operation.');   
   }
 
   return result;
