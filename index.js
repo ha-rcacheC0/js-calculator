@@ -1,24 +1,58 @@
 const rs = require('readline-sync');
 
-let sym = rs.question('What operation would you like to perform? ');
+// Ask the user, "What operation would you like to perform?"
+// Then the user enters one of these options: "/" "*" "-" "+"
 
+let operation;
+let breaker = false;
 
- if (sym !== '+' || '-' || '/' || '*') {
-  console.log('Please enter a valid character');
- } 
+ do {
+  operation = rs.question(`What operation would you like to perform? `);
 
-let num1 = rs.questionInt('Please enter your first number: ');
-let num2 = rs.questionInt('Please enter your second number: ');
-function cal() {
-  if (sym === '+') {
-    return 'The result is: ' + (num1 + num2);
-  } else if (sym === '/') {
-    return 'The result is: ' + num1 / num2; 
-  } else if (sym === '*') {
-    return 'The result is: ' + num1 * num2;
-  } else if (sym === '-') {
-    return 'The result is: ' + (num1 - num2);
+  if (operation !== '+' && operation !== '-' && operation !== '*' && operation !== '/') {
+    console.log('This is not a valid input.');
+    breaker = true;
+    } else {
+      breaker = false;
+    }
+} while (breaker);
+
+let num1 = rs.questionInt(`Please enter your first number.`);
+let num2;
+
+do {
+  num2 = rs.questionInt(`Your current operation is: ${num1} ${operation}
+Please enter your second number now for a result. `);
+
+  if (operation === '/' && num2 === 0) {
+    console.log(`Error: Division by zero is not allowed. Please enter a valid number.`);
+    breaker = true;
+  } else {
+    breaker = false;
   }
+} while (breaker)
+
+const answer = () => {
+  let result = 0;
+
+  switch (operation) {
+    case '+':
+      result = num1 + num2;
+      break;
+    case '-':
+      result = num1 - num2;
+      break;
+    case '*':
+      result = num1 * num2;
+      break;
+    case '/':
+      result = num1 / num2;
+      break;
+    default:
+      console.log('Invalid operation');   
+  }
+
+  return result;
 }
-console.log(cal());
- 
+
+console.log(`The result is: ${answer()}`);
