@@ -3,7 +3,8 @@ const rs = require('readline-sync');
 // Ask the user, "What operation would you like to perform?"
 // Then the user enters one of these options: "/" "*" "-" "+"
 
-let operation;
+const calculator  = () => {
+  let operation;
 let breaker = false;
 
  do {
@@ -56,3 +57,6 @@ const answer = () => {
 }
 
 console.log(`The result is: ${answer()}`);
+}
+
+calculator();
